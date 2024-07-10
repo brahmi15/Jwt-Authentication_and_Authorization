@@ -21,8 +21,8 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    //TO FETCH DETAILS OF ALL USERS
     //https://localhost:8080/home/getAll/users
+    //TO FETCH DETAILS OF ALL USERS
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/getAll/users")
     public ResponseEntity<List<User>> getAllUsers() {
@@ -44,8 +44,8 @@ public class HomeController {
     }
 
 
-    // GET SINGLE CUSTOMER BASED ON ID
     //https://localhost:8080/home/getUserById/{id}
+    // GET SINGLE CUSTOMER BASED ON ID
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/getUserById/{id}")
     public ResponseEntity<User> getDetail(@PathVariable("id") int id) {
@@ -63,8 +63,8 @@ public class HomeController {
     }
 
 
-    //TO KNOW WHICH USER IS LOGGED IN
     //https://localhost:8080/home/current-user
+    //TO KNOW WHICH USER IS LOGGED IN
     @GetMapping("/current-user")
     public ResponseEntity<String> getLoggedInUser(Principal principal) {
         try {
@@ -81,8 +81,8 @@ public class HomeController {
     }
 
 
-    //ADDING A NEW USER
     // https://localhost:8080/home/add/users
+    //ADDING A NEW USER
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add/users")
     public ResponseEntity<User> addUser(@RequestBody User user) {
